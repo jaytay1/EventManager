@@ -111,7 +111,10 @@
 
       	$getRSOs = "SELECT *
       					 FROM `rso`";
-      	$result = mysqli_query($connect, $getRSOs);
+        $result = mysqli_query($connect, $getRSOs);
+
+        //count the amount of cards for responsive design
+        $counter = 0;
 
         while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 
@@ -128,6 +131,32 @@
           echo "</a>";
           echo "</div>";
           echo "</div>";
+
+          $counter++; //increment counter
+
+          //for the responisve design
+          if (($counter % 2) == 0) {
+            //every two cards sm
+            echo '<div class="w-100 d-none d-sm-block d-md-none"></div>';
+          }
+
+          if (($counter % 3) == 0) {
+            //every three cards md
+            echo '<div class="w-100 d-none d-md-block d-lg-none"></div>';
+
+          }
+
+
+          if (($counter % 4) == 0) {
+            //every four cards lg
+            echo '<div class="w-100 d-none d-lg-block d-xl-none"></div>';
+          }
+
+
+          if (($counter % 5) == 0) {
+            //every five cards XL
+            echo '<div class="w-100 d-none d-xl-block"></div>';
+          }
         }
       ?>
     </div>

@@ -1,5 +1,8 @@
 <?php
   include_once 'connect.php';
+
+  session_start();
+  
 ?>
 
 <!doctype html>
@@ -52,6 +55,10 @@
                   <input name="university_name" type="text" class="form-control col-lg-10 col-sm-9 col-md-8" id="inputuniversityName" placeholder="Enter University Name">
               </div>
               <div class="form-group row">
+                  <label class="col-form-label col-lg-2 col-sm-3 col-md-4" for="inputUniversityDescription">University Description</label>
+                  <input name="university_description" type="text" class="form-control col-lg-10 col-sm-9 col-md-8" id="inputUniversityDescription" placeholder="Enter University Description">
+              </div>
+              <div class="form-group row">
                   <label class="col-form-label col-lg-2 col-sm-3 col-md-4" for="inputUniversityLocation">University Location</label>
                   <input name="university_location" type="text" class="form-control col-lg-10 col-sm-9 col-md-8" id="inputUniversityLocation" placeholder="Enter University Location">
               </div>
@@ -59,7 +66,7 @@
                   <label class="col-form-label col-lg-2 col-sm-3 col-md-4" for="inputUniversityNum">Enrollment Count</label>
                   <input name="university_num" type="text" class="form-control col-lg-10 col-sm-9 col-md-8" id="inputUniversityNum" placeholder="Enter Enrollment Count">
               </div>
-              <button type="submit" class="btn btn-primary btn-sm float-left">Create New User</button>
+              <button type="submit" name='submit' class="btn btn-primary btn-sm float-left">Create New User</button>
           </form>
       </div>
   </div>

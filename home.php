@@ -1,5 +1,9 @@
 <?php
   include_once 'connect.php';
+
+  session_start();
+
+  $user = $_SESSION['user'];
 ?>
 
 <!doctype html>
@@ -95,6 +99,12 @@
                 Create RSO
               </a>
             </li>
+            <li class="nav-item">
+              <a id="createEvent-tab" class="nav-link" href="createEventPage.php" role="tab" aria-selected="false">
+                <span class="icon" data-feather="plus"></span>
+                Create Event
+              </a>
+            </li>
           </ul>
         </div>
       </nav>
@@ -107,7 +117,7 @@
           id="home">
           <!--Jumbo Tron-->
           <div role="tabpanel" class="jumbotron">
-            <h1 class="display-3">Welcome!</h1>
+            <h1 class="display-3">Welcome! <?php echo $user; ?></h1>
             <p class="lead">To the University Event Manager. Using this webapp users can search, create, and view different types of events.
               These events are hosted by different types of Registered Student Organizations.</p>
             <hr class="my-4">

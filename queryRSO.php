@@ -1,5 +1,10 @@
 <?php
   include_once 'connect.php';
+  include_once 'session.php';
+
+  session_start();
+
+  $user = $_SESSION['user'];
 ?>
 
 <!doctype html>
@@ -48,7 +53,7 @@
         <div class="sidebar-sticky">
           <ul class="nav flex-column" role="navigation">
             <li class="nav-item">
-              <a id="home-tab" class="nav-link active" href="#home" data-toggle="tab" role="tab" aria-controls="home" aria-selected="true">
+              <a id="home-tab" class="nav-link active" href="home.php" data-toggle="tab" role="tab" aria-controls="home" aria-selected="true">
                 <span class="icon" data-feather="home"></span>
                 Home
                 <span class="sr-only">(current)</span>

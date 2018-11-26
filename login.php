@@ -1,3 +1,15 @@
+<?php
+  include_once 'connect.php';
+
+  session_start();
+
+  if(isset($_POST['submit']))
+  {
+    $_SESSION['user'] = htmlentities($_POST['username']);
+    header('Location: home.php');
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +38,7 @@
     <!--Username and password form-->
     <div id="formContainer" class="container content">
         <div class="row justify-content-center">
-            <form id="loginForm" action="home.php" method="post">
+            <form id="loginForm" method="post">
                 <div class="form-group row ">
                     <label class="col-form-label col-lg-2 col-sm-3 col-md-4" for="inputUserName">Username</label>
                     <input name="username" type="username" class="form-control col-lg-10 col-sm-9 col-md-8" id="inputUserName" aria-describedby="userNAmeHelp"
@@ -38,7 +50,7 @@
                         required="">
                 </div>
                 <div class="clearfix">
-                    <button id="loginButton" type="submit" class="btn btn-primary btn-sm login-submit float-left">Login</button>
+                    <button id="loginButton" name='submit' type="submit" class="btn btn-primary btn-sm login-submit float-left">Login</button>
                     <a class="float-right" id="forgotPasswordLink" href="{{ url_for('password') }}">Forgot Password</a>
                 </div>
 

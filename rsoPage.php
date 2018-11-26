@@ -1,7 +1,6 @@
 <?php
   include_once 'connect.php';
-
-
+  session_start();
 ?>
 
 <!doctype html>
@@ -16,7 +15,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
     crossorigin="anonymous">
   <link rel="stylesheet" href="main.css">
-  <title> <?php echo $rsoName; ?> </title>
+  <title> RSO Page </title>
 </head>
 
 <body>
@@ -27,12 +26,12 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="index.html">Home
+            <a class="nav-link" href="home.php">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Create Event</a>
+            <a class="nav-link" href="createEventPage.php">Create Event</a>
           </li>
         </ul>
         <div class="mt-2 mt-md-0">
@@ -49,23 +48,13 @@
      <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
-<<<<<<< HEAD
-        <h1 class="display-3">Knight Hacks</h1>
-        <p>The mission of Knight Hacks is to promote creativity within the Computer Science and Engineering community by planning
-          and executing “Hackathons”, which is defined as an event in which teams of developers, designers and project managers
-          collaborate to produce a software or hardware product in a set amount of time. We also hold workshops throughout
-          the year to give hands on experience with different technologies to attendees.
-        </p>
-=======
-        <h1 class="display-3"><?php $rsoName = $_GET['rsoName']; echo $rsoName; ?></h1>
-        <p>RSO DESCRIPTION HERE. This is a template for a simple marketing or informational website. It includes a large callout
-          called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more
-          unique.</p>
-		  <p>
-            <a class="btn btn-secondary" role="button">Join RSO &raquo;</a>
 
-          </p>
->>>>>>> d899e3330187a93c208be1fb1fbc7dbd3f81f7f8
+        <h1 class="display-3"><?php echo $_SESSION['rsoName']; ?></h1>
+          <h2 class="display-3"><?php echo $_SESSION['rsoUniversity']; ?></h2>
+          <h3 class="display-3"><?php echo $_SESSION['rsoType']; ?></h3>
+            <p> <?php echo $_SESSION['rsoDescription']; ?></p>
+              <p><a class="btn btn-secondary" role="button">Join RSO &raquo;</a></p>
+
       </div>
     </div>
 

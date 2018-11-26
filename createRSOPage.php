@@ -1,3 +1,8 @@
+<?php
+  include_once 'connect.php';
+  session_start();
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -66,7 +71,7 @@
                     </div>
 					             <p><b>Enter in the 5 students who will be creating this RSO</b></p><br />
 					          <div class="form-group col-sm-12 col-md-12 col-lg-12">
-                        <label for="adminEmail">Admin Email</label>
+                        <label for="adminEmail">Admin Email (yourself)</label>
                         <textarea name="email_1" class="form-control" id="Admin Email" rows="1" required=""></textarea>
                     </div>
 					          <div class="form-group col-sm-12 col-md-12 col-lg-12">
@@ -86,7 +91,7 @@
                         <textarea name="email_5" class="form-control" id="student5Email" rows="1" required=""></textarea>
                     </div>
                 </div>
-                <button id="createRSOBtn" type="submit" class="btn btn-primary">Create</button>
+                <button id="createRSOBtn" name="submit" type="submit" class="btn btn-primary">Create</button>
             </form>
         </div>
     </div>

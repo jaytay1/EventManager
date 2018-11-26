@@ -1,3 +1,7 @@
+<?php
+  include_once 'connect.php';
+?>
+
 <!DOCTYPE html>
 <?php
 	require('connect.php');
@@ -43,11 +47,22 @@
     $isActive = 1;
 
     // Insert RSO information
-		$sql = "INSERT INTO rso (rsoName, rsoType, numStudents, isActive, rsoDescription)
+		$sql = "INSERT INTO rso (rsoName, rsoType, numStudents, isActive, rsoDescription, adminName)
 		VALUES
-		('$rsoName', '$rsoType', $numStudents, $isActive, '$rsoDescription')";
+		('$rsoName', '$rsoType', $numStudents, $isActive, '$rsoDescription', '$email1')";
 
 		mysqli_query($connect, $sql);
 	}
-	header('Location: home.php');
+
+  //session variable
+  session_start();
+
+  if(isset($_POST['submit']))
+  {
+    $_SESSION['rsoName'] = htmlentities($_POST['rso_name']);
+    $_SESSION['rsoUniversity'] = htmlentities($_POST['rso_university']);
+    $_SESSION['rsoDescription'] = htmlentities($_POST['rso_description']);
+    $_SESSION['rsoType'] = htmlentities($_POST['rso_type']);
+    header('Location: rsoPage.php');
+  }
 ?>

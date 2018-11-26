@@ -1,3 +1,8 @@
+<?php
+  include_once 'connect.php';
+  include_once 'session.php';
+?>
+
 <!DOCTYPE html>
 <?php
 	require('connect.php');
@@ -8,6 +13,7 @@
 	$conf = $_POST['confirm_password'];
 	$email = $_POST['email'];
 	$uniName = $_POST['university_name'];
+  $uniDescription = $_POST['university_description'];
 	$uniLocation = $_POST['university_location'];
 	$uniCount = $_POST['university_num'];
 
@@ -30,10 +36,14 @@
 	}
 
 	// check if user is a super Admin
-	if(!empty($uniName) && !empty($uniLocation) && !empty($uniCount))
+	if(!empty($uniName) && !empty($uniDescription) && !empty($uniLocation) && !empty($uniCount))
 	{
 		$isSuperAdmin = 1;
 	}
+  else
+  {
+    $isSuperAdmin = 0;
+  }
 
 	// Check if there are any rows in the database that have the same userName
 	$sqlUserExist = "SELECT *
@@ -55,6 +65,22 @@
 		('$user', '$pass', '$email', $isSuperAdmin)";
 
 		mysqli_query($connect, $sql);
+
+    // insert university into db
+    $unisql = "INSERT INTO university (uniName, numStudents, uniDescription, address, superAdminName)
+    VALUES
+    ('$uniName', $uniCount, '$uniDescription', '$uniLocation', '$user')";
+
+    mysqli_query($connect, $unisql);
 	}
-	header('Location: home.php');
+
+  //session variable
+  session_start();
+
+  if(isset($_POST['submit']))
+  {
+    $_SESSION['user'] = htmlentities($_POST['username']);
+    $_SESSION['userEmail'] = htmlentities($_POST['email']);
+    header('Location: home.php');
+  }
 ?>

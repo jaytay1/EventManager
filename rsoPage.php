@@ -33,6 +33,9 @@
           <li class="nav-item">
             <a class="nav-link" href="createEventPage.php">Create Event</a>
           </li>
+		  <li class="nav-item">
+            <a class="nav-link" href="joinRSO.php">Join RSO</a>
+          </li>
         </ul>
         <div class="mt-2 mt-md-0">
           <a class="nav-item nav-link float-right" href="{{ url_for('login') }}">Log Out</a>
